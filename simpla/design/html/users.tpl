@@ -21,21 +21,13 @@
 
 {* Заголовок *}
 <div id="header">
-	{if $keyword && $users_count>0}
+	{if $keyword && $users_count}
 	<h1>{$users_count|plural:'Нашелся':'Нашлось':'Нашлись'} {$users_count} {$users_count|plural:'покупатель':'покупателей':'покупателя'}</h1>
-	{elseif $users_count>0}
+	{elseif $users_count}
 	<h1>{$users_count} {$users_count|plural:'покупатель':'покупателей':'покупателя'}</h1> 	
 	{else}
 	<h1>Нет покупателей</h1> 	
 	{/if}
-	
-	{if $users_count>0}
-	<form method="post" action="{url module=ExportUsersAdmin}" target="_blank">
-	<input type="hidden" name="session_id" value="{$smarty.session.id}">
-	<input type="image" src="./design/images/export_excel.png" name="export" title="Экспортировать этих покупателей">
-	</form>
-	{/if}
-	
 </div>
 
 {if $users}
@@ -45,14 +37,6 @@
 	<!-- Листалка страниц -->
 	{include file='pagination.tpl'}	
 	<!-- Листалка страниц (The End) -->
-
-	<div id="sort_links" style='display:block;'>
-	<!-- Ссылки для сортировки -->
-	Упорядочить по 
-	{if $sort!='name'}<a href="{url sort=name}">имени</a>{else}имени{/if} или
-	{if $sort!='date'}<a href="{url sort=date}">дате</a>{else}дате{/if}
-	<!-- Ссылки для сортировки (The End) -->
-	</div>
 
 	<form id="form_list" method="post">
 	<input type="hidden" name="session_id" value="{$smarty.session.id}">

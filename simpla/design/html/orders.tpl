@@ -53,8 +53,7 @@
 	 				{/if} 	 			
 				</div>
 				<div class="icons cell">
-					<a href='{url module=OrderAdmin id=$order->id view=print}'  target="_blank" class="print" title="Печать заказа"></a>
-					<a href='#' class=delete title="Удалить"></a>
+					<a href='#' class=delete></a>
 				</div>
 				<div class="name cell" style='white-space:nowrap;'>
 	 				{$order->total_price|escape} {$currency->sign}

@@ -25,7 +25,6 @@
 		<option value='3' {if $order->status == 3}selected{/if}>Удален</option>
 	</select>
 	</h1>
-	<a href="{url view=print}" target="_blank"><img src="./design/images/printer.png" name="export" title="Печать заказа"></a>
 
 
 	<div id=next_order>

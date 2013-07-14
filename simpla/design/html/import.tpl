@@ -46,7 +46,7 @@
     				}
   				},
 				error: function(xhr, status, errorThrown) {
-					alert(errorThrown+'\n'+xhr.responseText);
+                	alert(errorThrown+'\n'+status+'\n'+xhr.statusText);
         		}  				
 		});
 	

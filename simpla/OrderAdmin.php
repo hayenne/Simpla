@@ -210,9 +210,7 @@ class OrderAdmin extends Simpla
 		$payment_methods = $this->payment->get_payment_methods();
 		$this->design->assign('payment_methods', $payment_methods);
 		
-		if($this->request->get('view') == 'print')
- 		  	return $this->design->fetch('order_print.tpl');
- 	  	else
-	 	  	return $this->design->fetch('order.tpl');
+
+ 	  	return $this->design->fetch('order.tpl');
 	}
 }

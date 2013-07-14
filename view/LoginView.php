@@ -76,13 +76,7 @@ class LoginView extends View
 				if($user->enabled)
 				{
 					$_SESSION['user_id'] = $user_id;
-					$this->users->update_user($user_id, array('last_ip'=>$_SERVER['REMOTE_ADDR']));
-					
-					// Перенаправляем пользователя на прошлую страницу, если она известна
-					if(!empty($_SESSION['last_visited_page']))
-						header('Location: '.$_SESSION['last_visited_page']);				
-					else
-						header('Location: '.$this->config->root_url);				
+					header('Location: '.$this->config->root_url);				
 				}
 				else
 				{

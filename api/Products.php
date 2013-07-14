@@ -40,7 +40,6 @@ class Products extends Simpla
 		$is_featured_filter = '';
 		$discounted_filter = '';
 		$in_stock_filter = '';
-		$group_by = '';
 		$order = 'p.position DESC';
 
 		if(isset($filter['limit']))
@@ -55,10 +54,7 @@ class Products extends Simpla
 			$product_id_filter = $this->db->placehold('AND p.id in(?@)', (array)$filter['id']);
 
 		if(!empty($filter['category_id']))
-		{
 			$category_id_filter = $this->db->placehold('INNER JOIN __products_categories pc ON pc.product_id = p.id AND pc.category_id in(?@)', (array)$filter['category_id']);
-			$group_by = "GROUP BY p.id";
-		}
 
 		if(!empty($filter['brand_id']))
 			$brand_id_filter = $this->db->placehold('AND p.brand_id in(?@)', (array)$filter['brand_id']);
@@ -133,7 +129,7 @@ class Products extends Simpla
 					$discounted_filter
 					$in_stock_filter
 					$visible_filter
-				$group_by
+				GROUP BY p.id
 				ORDER BY $order
 					$sql_limit";
 
@@ -255,8 +251,8 @@ class Products extends Simpla
 		
 		if(empty($product['url']))
 		{
-			$product['url'] = preg_replace("/[\s]+/ui", '-', $product['name']);
-			$product['url'] = strtolower(preg_replace("/[^0-9a-zа-я\-]+/ui", '', $product['url']));
+			$product['url'] = preg_replace("/[\s]+/ui", '_', $product['name']);
+			$product['url'] = strtolower(preg_replace("/[^0-9a-zа-я_]+/ui", '', $product['url']));
 		}
 
 		// Если есть товар с таким URL, добавляем к нему число
